@@ -42,6 +42,5 @@ func main() {
 	quote := Quote{}
 	quote.getQuote(*lang)
 
-	fmt.Println(quote.Text)
-	fmt.Println(quote.Author)
+	fmt.Printf("%s\n- %s\n", quote.Text, quote.Author)
 }
