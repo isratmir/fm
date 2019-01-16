@@ -2,14 +2,14 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 )
 
-const url  = "https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en"
+const url  = "https://api.forismatic.com/api/1.0/?method=getQuote&format=json"
 
 type Quote struct {
 	Text string `json:"quoteText"`
@@ -17,8 +17,9 @@ type Quote struct {
 	Link string `json:"quoteLink"`
 }
 
-func getQuote() []byte {
-	resp, err := http.Get(url)
+func (q *Quote) getQuote(lang string) {
+	URL := url + "&lang="+lang
+	resp, err := http.Get(URL)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -29,19 +30,17 @@ func getQuote() []byte {
 		log.Fatal(err)
 	}
 
-	return body
+	err2 := json.Unmarshal(body, q)
+	if err2 != nil{
+		log.Fatal(err)
+	}
 }
 
 func main() {
-	args := os.Args
-	fmt.Println(args)
-	data := getQuote()
+	lang := flag.String("l", "en", "Quote language")
+	flag.Parse()
 	quote := Quote{}
-	err := json.Unmarshal(data, &quote)
-	if err != nil{
-		fmt.Println(err)
-		return
-	}
+	quote.getQuote(*lang)
 
 	fmt.Println(quote.Text)
 	fmt.Println(quote.Author)
