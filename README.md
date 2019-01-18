@@ -12,7 +12,7 @@ $ export PATH=$PATH:$(go env GOPATH)/bin
 ### Usage
 
 ```bash
-$ $GOPATH/bin/fm
+$ fm
 Take rest; a field that has rested gives a bountiful crop. 
 - Ovid
 ```
