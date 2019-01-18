@@ -3,7 +3,10 @@
 Download and install it:
 ```bash
 $ go get -u github.com/isratmir/fm
-$ go install github.com/isratmir/fm
+```
+For convenience, add the workspace's bin subdirectory to your PATH:
+```bash
+$ export PATH=$PATH:$(go env GOPATH)/bin
 ```
 
 ### Usage
@@ -14,10 +17,7 @@ Take rest; a field that has rested gives a bountiful crop.
 - Ovid
 ```
 
-For convenience, add the workspace's bin subdirectory to your PATH:
-```bash
-$ export PATH=$PATH:$(go env GOPATH)/bin
-```
+
 
 and you can get quotes with short call:
 ```bash
