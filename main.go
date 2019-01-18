@@ -30,8 +30,8 @@ func (q *Quote) getQuote(lang string) {
 		log.Fatal(err)
 	}
 
-	err2 := json.Unmarshal(body, q)
-	if err2 != nil{
+	err = json.Unmarshal(body, q)
+	if err != nil{
 		log.Fatal(err)
 	}
 }
