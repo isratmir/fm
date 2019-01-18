@@ -1,4 +1,4 @@
-####Installation
+### Installation
 
 Download and install it:
 ```bash
@@ -6,7 +6,7 @@ $ go get -u github.com/isratmir/fm
 $ go install github.com/isratmir/fm
 ```
 
-####Usage
+### Usage
 
 ```bash
 $ $GOPATH/bin/fm
